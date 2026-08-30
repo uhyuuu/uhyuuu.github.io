@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mio · 作品集 | Mio·个人网站</title>
+<meta name="description" content="Mio 的作品集：好食光 AI 健康饮食 App、智能简历匹配 Agent、Mio 个人网站。">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.cover-1{background:linear-gradient(135deg,#EDE0CE 0%,#D8BD9B 100%)}
+.cover-2{background:linear-gradient(135deg,#E4D8C2 0%,#C4AC8D 100%)}
+.cover-3{background:linear-gradient(135deg,#F0E6D6 0%,#E2CFB2 100%)}
+</style>
+</head>
+<body>
+
+<button class="hamburger" aria-label="打开菜单"><span></span><span></span><span></span></button>
+<div class="overlay"></div>
+
+<!-- 左侧固定侧边栏 -->
+<aside class="sidebar">
+  <div class="avatar">M</div>
+  <div class="name">Mio</div>
+  <div class="sign">用 AI 认真做产品<br>记录项目、想法与生活碎片</div>
+  <nav class="nav">
+    <a href="index.html"><span class="ic">🏠</span>首页</a>
+    <a href="about.html"><span class="ic">👤</span>自我介绍</a>
+    <a href="projects.html" class="on"><span class="ic">🗂️</span>作品集</a>
+  </nav>
+  <div class="social">
+    <a href="mailto:864130172@qq.com" data-tip="邮箱：864130172@qq.com">📮</a>
+    <a href="javascript:void(0)" onclick="copyWechat()" data-tip="微信：uhyu33">💬</a>
+    <a href="https://github.com/uhyuuu" target="_blank" rel="noopener" data-tip="GitHub">🐙</a>
+  </div>
+  <div class="copyright">© 2026 Mio</div>
+</aside>
+
+<!-- 右侧主内容 -->
+<main class="main">
+
+  <h1 class="page-title">作品集</h1>
+  <p class="page-desc">独立完成的 AI 产品，从需求定义、方案设计到开发上线、数据迭代，全流程一手负责。</p>
+
+  <section class="grid">
+
+    <article class="proj-card">
+      <div class="cover cover-1"><span class="year">2026</span>🍽️</div>
+      <div class="body">
+        <h3>《好食光》AI 健康饮食 App</h3>
+        <p>以「精细记录 → 精准估算 + 体型诊断」为核心的 AI 健康饮食产品，反「体重焦虑」，把记录工具升级为诊断工具。</p>
+        <a class="more" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">查看详情 →</a>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="cover cover-2"><span class="year">2026</span>🤖</div>
+      <div class="body">
+        <h3>智能简历匹配 Agent</h3>
+        <p>AI 求职助手：简历解析 → LLM 画像分析 → 实时搜岗 → 报告生成，三重在招核验保证岗位真实可投。</p>
+        <a class="more" href="https://resume-match-agent-ajdssphvnasocg3xmxyy3k.streamlit.app/" target="_blank" rel="noopener">查看详情 →</a>
+      </div>
+    </article>
+
+    <article class="proj-card">
+      <div class="cover cover-3"><span class="year">2026</span>✨</div>
+      <div class="body">
+        <h3>Mio · 个人网站</h3>
+        <p>用纯 HTML + CSS + 少量 JavaScript 手写的个人作品集网站：暖棕配色、侧边栏导航、移动端汉堡菜单。</p>
+        <a class="more" href="index.html">查看详情 →</a>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>

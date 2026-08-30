@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mio · 自我介绍 | Mio·个人网站</title>
+<meta name="description" content="Mio 的自我介绍：华中师范大学信息管理专业，AI 产品经理方向，个人经历、技能标签与兴趣爱好。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<button class="hamburger" aria-label="打开菜单"><span></span><span></span><span></span></button>
+<div class="overlay"></div>
+
+<!-- 左侧固定侧边栏 -->
+<aside class="sidebar">
+  <div class="avatar">M</div>
+  <div class="name">Mio</div>
+  <div class="sign">用 AI 认真做产品<br>记录项目、想法与生活碎片</div>
+  <nav class="nav">
+    <a href="index.html"><span class="ic">🏠</span>首页</a>
+    <a href="about.html" class="on"><span class="ic">👤</span>自我介绍</a>
+    <a href="projects.html"><span class="ic">🗂️</span>作品集</a>
+  </nav>
+  <div class="social">
+    <a href="mailto:864130172@qq.com" data-tip="邮箱：864130172@qq.com">📮</a>
+    <a href="javascript:void(0)" onclick="copyWechat()" data-tip="微信：uhyu33">💬</a>
+    <a href="https://github.com/uhyuuu" target="_blank" rel="noopener" data-tip="GitHub">🐙</a>
+  </div>
+  <div class="copyright">© 2026 Mio</div>
+</aside>
+
+<!-- 右侧主内容 -->
+<main class="main">
+
+  <h1 class="page-title">自我介绍</h1>
+  <p class="page-desc">正在走向 AI 产品经理路上的信息管理专业学生，相信「好产品是设计出来的，也是被理解出来的」。</p>
+
+  <section>
+    <h2 class="section-title">个人经历</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">2026 至今</div>
+        <h3>AI 产品经理（实习）方向</h3>
+        <p>熟悉 Claude Code、Cursor、Manus 等 Agent 产品的基础逻辑与使用场景；了解 LLM 底层机制（Tool Use、MCP、Memory、Multi-Agent）及 Prompt Engineering 基本方法论，具备通过 AI 辅助完成原型设计、PRD 撰写等 PM 工作的能力。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2026</div>
+        <h3>独立完成《好食光》AI 健康饮食 App</h3>
+        <p>从需求调研、产品设计到开发上线、数据迭代全流程负责；亲测薄荷健康、小卡健康等竞品，输出功能对比矩阵与差异化定位，用 20+ 轮用户反馈驱动迭代。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2026</div>
+        <h3>独立开发智能简历匹配 Agent</h3>
+        <p>设计「简历解析 → LLM 画像分析 → 实时搜岗 → 报告生成」端到端流程，用「三重在招核验」保证推荐岗位真实可投，覆盖「看什么 → 差什么 → 做什么」完整决策链路。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">2025 至今</div>
+        <h3>华中师范大学 · 信息管理专业</h3>
+        <p>主修互联网产品设计、用户体验设计、用户数据分析、C 语言、Python、Java、数据结构、算法分析、数据库（MySQL）等课程。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">技能标签</h2>
+    <div class="tags">
+      <span class="tag">AI 产品认知</span>
+      <span class="tag">Prompt Engineering</span>
+      <span class="tag">高保真原型与 PRD</span>
+      <span class="tag">用户调研与访谈</span>
+      <span class="tag">数据驱动决策</span>
+      <span class="tag">UI/UX 审美</span>
+      <span class="tag">Java</span>
+      <span class="tag">Python</span>
+      <span class="tag">Linux 运维</span>
+      <span class="tag">项目管理</span>
+      <span class="tag">Word · Excel · PPT</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">兴趣爱好</h2>
+    <div class="hobbies">
+      <span class="hobby">🍳 研究美食与轻食</span>
+      <span class="hobby">✍️ 写日记、记录生活</span>
+      <span class="hobby">🤖 折腾 AI 产品与 Agent</span>
+      <span class="hobby">📚 读产品与设计</span>
+      <span class="hobby">🏃 运动与减脂</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">联系我</h2>
+    <div class="card contact-card">
+      <div class="contact-row">
+        <div class="ic">📮</div>
+        <div><b>邮箱</b><p>864130172@qq.com</p></div>
+        <a class="link" href="mailto:864130172@qq.com">写信 →</a>
+      </div>
+      <div class="contact-row">
+        <div class="ic">💬</div>
+        <div><b>微信</b><p>uhyu33</p></div>
+        <a class="link" href="javascript:void(0)" onclick="copyWechat()">复制 →</a>
+      </div>
+      <div class="contact-row">
+        <div class="ic">🐙</div>
+        <div><b>GitHub</b><p>github.com/uhyuuu</p></div>
+        <a class="link" href="https://github.com/uhyuuu" target="_blank" rel="noopener">访问 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/script.js"></script>
+</body>
+</html>
