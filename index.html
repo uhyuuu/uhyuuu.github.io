@@ -17,7 +17,6 @@
   --text3:#B89A88;
   --line:#F0DDCC;
   --shadow:0 4px 20px rgba(140,90,55,.08);
-  --shadow-lg:0 12px 40px rgba(140,90,55,.12);
   --radius:18px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -31,7 +30,7 @@ a{color:inherit;text-decoration:none}
 
 /* 顶部导航 */
 nav{
-  position:sticky;top:0;z-index:50;background:rgba(250,241,231,.85);
+  position:sticky;top:0;z-index:50;background:rgba(250,241,231,.9);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
 }
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -40,9 +39,14 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .nav-links{display:flex;gap:6px}
 .nav-links a{padding:8px 14px;border-radius:99px;font-size:14px;font-weight:500;color:var(--text2);transition:.2s}
 .nav-links a:hover{background:var(--primary-bg);color:var(--primary-deep)}
+.nav-links a.on{background:var(--primary-deep);color:#fff}
 
-/* Hero */
-header{padding:72px 0 56px;text-align:center;background:linear-gradient(180deg,#FBEEDF 0%,var(--bg) 100%)}
+/* 页面切换 */
+.page{display:none}
+.page.active{display:block}
+
+/* Hero（首页） */
+header{padding:72px 0 60px;text-align:center;background:linear-gradient(180deg,#FBEEDF 0%,var(--bg) 100%);min-height:calc(100vh - 60px)}
 .avatar{
   width:88px;height:88px;border-radius:50%;margin:0 auto 20px;
   background:linear-gradient(135deg,#F2B98C,#D98E5F);
@@ -64,17 +68,17 @@ header .intro{max-width:600px;margin:18px auto 0;color:var(--text2);font-size:15
 .btn-primary:hover{background:#B96E3E;transform:translateY(-2px)}
 .btn-ghost{background:var(--surface);color:var(--primary-deep);border-color:#EFD3BA}
 .btn-ghost:hover{background:var(--primary-bg)}
-.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;text-align:left}
 .hl{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  padding:20px 18px;text-align:left;box-shadow:var(--shadow);
+  padding:20px 18px;box-shadow:var(--shadow);
 }
 .hl .ic{font-size:24px}
 .hl b{display:block;margin-top:8px;font-size:15px}
 .hl p{font-size:13px;color:var(--text2);margin-top:4px;line-height:1.6}
 
 /* 通用 section */
-section{padding:64px 0}
+section{padding:56px 0 72px}
 .sec-tag{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--primary-deep);text-transform:uppercase}
 .sec-title{font-size:30px;font-weight:800;margin-top:6px}
 .sec-desc{color:var(--text2);font-size:15px;margin-top:8px;max-width:640px}
@@ -83,7 +87,7 @@ section{padding:64px 0}
   box-shadow:var(--shadow);padding:26px;
 }
 
-/* 关于 */
+/* 自我介绍 */
 .edu{display:flex;align-items:center;gap:16px;background:var(--primary-bg);border-radius:var(--radius);padding:18px 22px;margin-top:26px;border:1px solid #F2D6BD}
 .edu .ic{font-size:30px}
 .edu b{font-size:16px}
@@ -99,8 +103,7 @@ section{padding:64px 0}
 .tag{font-size:13px;font-weight:500;background:var(--primary-bg);color:var(--primary-deep);border:1px solid #F2D6BD;padding:6px 13px;border-radius:99px}
 
 /* 项目 */
-.project-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px}
-.role-tag{font-size:12px;font-weight:600;color:var(--primary-deep);background:var(--primary-bg);border:1px solid #F2D6BD;padding:5px 12px;border-radius:99px;white-space:nowrap}
+.role-tag{font-size:12px;font-weight:600;color:var(--primary-deep);background:var(--primary-bg);border:1px solid #F2D6BD;padding:5px 12px;border-radius:99px;display:inline-block}
 .project-title{font-size:24px;font-weight:800;margin-top:10px}
 .project-one{color:var(--text2);font-size:15px;margin-top:8px;max-width:640px}
 .link-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:11px 22px;border-radius:99px;background:var(--primary-deep);color:#fff;font-weight:600;font-size:14px;box-shadow:0 6px 18px rgba(201,123,74,.28);transition:.2s}
@@ -129,19 +132,21 @@ section{padding:64px 0}
   text-align:center;color:var(--text3);background:rgba(255,255,255,.5);font-size:14px;
 }
 
-/* 联系/页脚 */
-footer{background:#F4E3D3;padding:48px 0 32px;text-align:center}
-footer .f-title{font-size:24px;font-weight:800}
-footer .f-desc{color:var(--text2);font-size:14px;margin-top:8px}
-.f-links{display:flex;gap:14px;justify-content:center;margin-top:22px;flex-wrap:wrap}
-.f-links a{background:var(--surface);border:1px solid var(--line);padding:11px 20px;border-radius:99px;font-size:14px;font-weight:600;color:var(--primary-deep);transition:.2s}
-.f-links a:hover{background:var(--primary-bg)}
-.copy{margin-top:30px;font-size:12px;color:var(--text3)}
+/* 联系页 */
+.contact-page{padding:72px 0;text-align:center}
+.contact-page .sec-title{margin-top:6px}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.c-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px;box-shadow:var(--shadow);transition:.2s}
+.c-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(140,90,55,.12)}
+.c-card .ic{font-size:30px}
+.c-card b{display:block;margin-top:10px;font-size:15px}
+.c-card p{font-size:13px;color:var(--text2);margin-top:4px;word-break:break-all}
+.copy{margin-top:44px;font-size:12px;color:var(--text3)}
 
 @media (max-width:680px){
   header{padding:52px 0 44px}
   header h1{font-size:34px}
-  .highlights,.skills,.pain,.metrics{grid-template-columns:1fr}
+  .highlights,.skills,.pain,.metrics,.contact-cards{grid-template-columns:1fr}
   .nav-links a{padding:8px 10px;font-size:13px}
   .sec-title{font-size:26px}
 }
@@ -161,137 +166,167 @@ footer .f-desc{color:var(--text2);font-size:14px;margin-top:8px}
   </div>
 </nav>
 
-<!-- 首页概览 -->
-<header id="home">
-  <div class="wrap">
-    <div class="avatar">M</div>
-    <div class="badge">华中师范大学 · 信息管理专业</div>
-    <h1>你好，我是 <em>Mio</em></h1>
-    <div class="sub">AI 产品经理（实习）方向</div>
-    <p class="intro">我习惯把「用户痛点 → 产品方案 → 快速验证」完整走一遍：用 AI 辅助需求分析与高保真设计，也具备独立开发能力，能把想法真正做成可用的产品。下面这个 App，就是我从 0 到 1 独立完成的 AI 产品。</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#projects">👇 看看我的项目</a>
-      <a class="btn btn-ghost" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">🍽️ 体验《好食光》</a>
-    </div>
-    <div class="highlights">
-      <div class="hl"><div class="ic">🤖</div><b>AI 产品认知</b><p>熟悉 Agent 类产品逻辑与 LLM 底层机制，能用 AI 提效完成原型与 PRD</p></div>
-      <div class="hl"><div class="ic">📊</div><b>数据驱动</b><p>了解问卷、访谈、A/B 测试方法，习惯用数据辅助产品决策</p></div>
-      <div class="hl"><div class="ic">🎨</div><b>设计 × 开发</b><p>具备 UI/UX 审美，可独立完成高保真设计，也能亲手把产品做上线</p></div>
-    </div>
-  </div>
-</header>
-
-<!-- 自我介绍 -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-tag">ABOUT</div>
-    <h2 class="sec-title">自我介绍</h2>
-    <p class="sec-desc">正在走向 AI 产品经理路上的信息管理专业学生，相信「好产品是设计出来的，也是被理解出来的」。</p>
-
-    <div class="edu">
-      <div class="ic">🎓</div>
-      <div>
-        <b>华中师范大学 · 信息管理专业</b>
-        <p>主修：互联网产品设计 · 用户体验设计 · 用户数据分析 · 数据结构 · 算法分析 · 数据库（MySQL）等</p>
+<!-- ========== 首页 ========== -->
+<div class="page" id="page-home">
+  <header>
+    <div class="wrap">
+      <div class="avatar">M</div>
+      <div class="badge">华中师范大学 · 信息管理专业</div>
+      <h1>你好，我是 <em>Mio</em></h1>
+      <div class="sub">AI 产品经理（实习）方向</div>
+      <p class="intro">我习惯把「用户痛点 → 产品方案 → 快速验证」完整走一遍：用 AI 辅助需求分析与高保真设计，也具备独立开发能力，能把想法真正做成可用的产品。下面这个 App，就是我从 0 到 1 独立完成的 AI 产品。</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">👇 看看我的项目</a>
+        <a class="btn btn-ghost" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">🍽️ 体验《好食光》</a>
+      </div>
+      <div class="highlights">
+        <div class="hl"><div class="ic">🤖</div><b>AI 产品认知</b><p>熟悉 Agent 类产品逻辑与 LLM 底层机制，能用 AI 提效完成原型与 PRD</p></div>
+        <div class="hl"><div class="ic">📊</div><b>数据驱动</b><p>了解问卷、访谈、A/B 测试方法，习惯用数据辅助产品决策</p></div>
+        <div class="hl"><div class="ic">🎨</div><b>设计 × 开发</b><p>具备 UI/UX 审美，可独立完成高保真设计，也能亲手把产品做上线</p></div>
       </div>
     </div>
+  </header>
+</div>
 
-    <div class="skills">
-      <div class="skill"><div class="ic">🤖</div><b>AI 产品认知</b><p>熟悉 Claude Code、Cursor、Manus 等 Agent 产品的基础逻辑与使用场景；了解 LLM 底层机制（Tool Use、MCP、Memory、Multi-Agent）及 Prompt Engineering 基本方法论；具备通过 AI 辅助完成原型设计、PRD 撰写等 PM 工作的能力。</p></div>
-      <div class="skill"><div class="ic">📊</div><b>数据驱动意识</b><p>了解问卷、访谈、A/B 测试等数据收集方法的适用场景与基本流程，具备用数据辅助产品决策的思维框架。</p></div>
-      <div class="skill"><div class="ic">🎨</div><b>产品设计素养</b><p>具备 UI/UX 审美能力，可借助 AI 工具独立完成高保真原型与产品视觉设计。</p></div>
-      <div class="skill"><div class="ic">💻</div><b>开发与运维</b><p>掌握 Java 基础开发，熟悉 Linux 系统运维，能理解技术实现边界、与技术顺畅沟通。</p></div>
-      <div class="skill"><div class="ic">🗂️</div><b>项目管理</b><p>理解 IT 项目生命周期，擅长需求沟通与进度跟踪，具有实际项目协调经验。</p></div>
-      <div class="skill"><div class="ic">📝</div><b>办公与文档</b><p>熟练掌握 Word、Excel、PPT 等办公软件，擅长资料整理、数据处理与文档排版。</p></div>
-    </div>
+<!-- ========== 自我介绍 ========== -->
+<div class="page" id="page-about">
+  <section>
+    <div class="wrap">
+      <div class="sec-tag">ABOUT</div>
+      <h2 class="sec-title">自我介绍</h2>
+      <p class="sec-desc">正在走向 AI 产品经理路上的信息管理专业学生，相信「好产品是设计出来的，也是被理解出来的」。</p>
 
-    <div class="courses">
-      <div class="lbl">主修课程</div>
-      <div class="tags">
-        <span class="tag">互联网产品设计</span><span class="tag">用户体验设计</span><span class="tag">用户数据分析</span><span class="tag">C 语言</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">数据结构</span><span class="tag">算法分析</span><span class="tag">数据库（MySQL）</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 项目介绍 -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-tag">PROJECT</div>
-    <h2 class="sec-title">项目介绍</h2>
-    <p class="sec-desc">独立完成的 AI 产品，从需求定义、方案设计到开发上线、数据迭代，全流程一手负责。</p>
-
-    <div class="card" style="margin-top:26px">
-      <div class="project-head">
+      <div class="edu">
+        <div class="ic">🎓</div>
         <div>
-          <span class="role-tag">个人项目 · 产品负责人 & 全栈开发</span>
-          <div class="project-title">《好食光》AI 健康饮食 App</div>
-          <p class="project-one">以「精细记录 → 精准估算 + 体型诊断」为核心的 AI 健康饮食产品：反「体重焦虑」，不做大而全的卡路里工具，而是把「记录工具」升级成「诊断工具」。</p>
+          <b>华中师范大学 · 信息管理专业</b>
+          <p>主修：互联网产品设计 · 用户体验设计 · 用户数据分析 · 数据结构 · 算法分析 · 数据库（MySQL）等</p>
         </div>
       </div>
-      <a class="link-btn" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">🍽️ 打开 App 在线体验</a>
 
-      <div class="pain">
-        <div class="pain-item"><div class="n">痛点 ①</div><p>市面 App 按「食物名 + 分量」估算热量，中式家常菜做法差异大，同一种菜热量可差一倍，估算严重失真。</p></div>
-        <div class="pain-item"><div class="n">痛点 ②</div><p>减脂只看体重数字，体重不动就焦虑，忽视了围度下降、体型变好这些真实正向反馈。</p></div>
-        <div class="pain-item"><div class="n">痛点 ③</div><p>记录工具只给数据、不给分析，用户不知道「自己差在哪、该怎么调整」。</p></div>
+      <div class="skills">
+        <div class="skill"><div class="ic">🤖</div><b>AI 产品认知</b><p>熟悉 Claude Code、Cursor、Manus 等 Agent 产品的基础逻辑与使用场景；了解 LLM 底层机制（Tool Use、MCP、Memory、Multi-Agent）及 Prompt Engineering 基本方法论；具备通过 AI 辅助完成原型设计、PRD 撰写等 PM 工作的能力。</p></div>
+        <div class="skill"><div class="ic">📊</div><b>数据驱动意识</b><p>了解问卷、访谈、A/B 测试等数据收集方法的适用场景与基本流程，具备用数据辅助产品决策的思维框架。</p></div>
+        <div class="skill"><div class="ic">🎨</div><b>产品设计素养</b><p>具备 UI/UX 审美能力，可借助 AI 工具独立完成高保真原型与产品视觉设计。</p></div>
+        <div class="skill"><div class="ic">💻</div><b>开发与运维</b><p>掌握 Java 基础开发，熟悉 Linux 系统运维，能理解技术实现边界、与技术顺畅沟通。</p></div>
+        <div class="skill"><div class="ic">🗂️</div><b>项目管理</b><p>理解 IT 项目生命周期，擅长需求沟通与进度跟踪，具有实际项目协调经验。</p></div>
+        <div class="skill"><div class="ic">📝</div><b>办公与文档</b><p>熟练掌握 Word、Excel、PPT 等办公软件，擅长资料整理、数据处理与文档排版。</p></div>
       </div>
 
-      <div class="subtitle">我的工作流</div>
-      <div class="flow">
-        <span><b>用户调研</b> → 痛点提炼</span>
-        <span><b>竞品分析</b> → 差异化定位</span>
-        <span><b>PRD 撰写</b> → 需求定义</span>
-        <span><b>方案设计</b> → 信息架构与交互</span>
-        <span><b>开发上线</b> → 独立实现并部署</span>
-        <span><b>数据迭代</b> → 反馈驱动 20+ 轮优化</span>
-      </div>
-
-      <div class="subtitle">关键产品决策</div>
-      <div class="decision"><b>① 用「记录颗粒度」换「估算精准度」</b><p>设计烹饪方式、用油量、酱料、自制/外卖四个精细字段，由 AI 按做法动态校准热量；同时支持拍照识别营养成分表 + 手动克重，让每餐估算有据可依。</p></div>
-      <div class="decision"><b>② 反「体重焦虑」的指标观</b><p>把多部位围度变化放在首页第一指标位、体重降权；支持 11 项围度 + BMI + 腰臀比 → AI 体型画像（梨形 / 苹果型 / 沙漏型等），并按体型给出饮食侧重建议。</p></div>
-      <div class="decision"><b>③ 从记录工具升级为诊断工具</b><p>时间轴叠加围度曲线与每周饮食指标、事件标注，用「个体内对照」自动归因（用户自己的好周期 vs 停滞周期），并一键生成两周验证计划，形成行动闭环。</p></div>
-      <div class="decision"><b>④ 诚实的产品设计</b><p>设置记录完整度门槛（周期内 ≥10 天才出归因报告）、冷启动 2–4 周基线期，所有结论标注「相关观察，仅供参考」——不做因果承诺、不做医疗建议。</p></div>
-
-      <div class="subtitle">竞品分析（驱动定位）</div>
-      <p style="font-size:14px;color:var(--text2);margin-top:10px">亲测薄荷健康（传统头部：大食物库 + 内容电商）与小卡健康（AI 新锐：拍照识别 + AI 搭子），梳理用户评价与版本迭代，输出功能对比矩阵与定位图，得出差异化结论：<b style="color:var(--primary-deep)">不做大食物库、不卷 AI 陪伴，专注「记录颗粒度 → 精准估算」与「围度/体型诊断」</b>。</p>
-
-      <div class="subtitle">结果与迭代</div>
-      <div class="metrics">
-        <div class="metric"><b>20+</b><p>用户反馈驱动的需求迭代轮次</p></div>
-        <div class="metric"><b>4</b><p>版本演进：v1 记录 → v2 AI+分析 → v3 云同步+家庭空间 → v4 精细记录+联动归因</p></div>
-        <div class="metric"><b>上线</b><p>免费部署 GitHub Pages，手机端真实可用，数据跨设备云同步</p></div>
-      </div>
-      <div class="ver">
-        <span>核心功能：AI 食物估算</span><span>拍照识别营养成分表</span><span>11 项围度记录本</span><span>体脂秤报告识别</span><span>每周热量结算</span><span>喝水目标</span><span>日记本</span><span>家庭空间共享</span>
-      </div>
-
-      <div class="subtitle">技术栈</div>
-      <div class="tags" style="margin-top:10px">
-        <span class="tag">HTML / CSS / JS 单页应用</span>
-        <span class="tag">DeepSeek 大模型（AI 估算 / 拍照识别）</span>
-        <span class="tag">腾讯云函数（AI 中转）</span>
-        <span class="tag">CloudBase 云数据库同步</span>
+      <div class="courses">
+        <div class="lbl">主修课程</div>
+        <div class="tags">
+          <span class="tag">互联网产品设计</span><span class="tag">用户体验设计</span><span class="tag">用户数据分析</span><span class="tag">C 语言</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">数据结构</span><span class="tag">算法分析</span><span class="tag">数据库（MySQL）</span>
+        </div>
       </div>
     </div>
+  </section>
+</div>
 
-    <div class="empty">✨ 更多项目建设中，敬请期待</div>
-  </div>
-</section>
+<!-- ========== 项目介绍 ========== -->
+<div class="page" id="page-projects">
+  <section>
+    <div class="wrap">
+      <div class="sec-tag">PROJECT</div>
+      <h2 class="sec-title">项目介绍</h2>
+      <p class="sec-desc">独立完成的 AI 产品，从需求定义、方案设计到开发上线、数据迭代，全流程一手负责。</p>
 
-<!-- 联系 -->
-<footer id="contact">
-  <div class="wrap">
-    <div class="f-title">一起聊聊产品？</div>
-    <p class="f-desc">如果你对《好食光》或 AI 产品想法感兴趣，欢迎联系我～</p>
-    <div class="f-links">
-      <a href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">🍽️ 《好食光》在线体验</a>
-      <a href="mailto:864130172@qq.com">📮 864130172@qq.com</a>
-      <a href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('uhyu33');alert('微信号：uhyu33（已复制，可直接添加）');return false;">💬 微信：uhyu33</a>
+      <div class="card" style="margin-top:26px">
+        <span class="role-tag">个人项目 · 产品负责人 & 全栈开发</span>
+        <div class="project-title">《好食光》AI 健康饮食 App</div>
+        <p class="project-one">以「精细记录 → 精准估算 + 体型诊断」为核心的 AI 健康饮食产品：反「体重焦虑」，不做大而全的卡路里工具，而是把「记录工具」升级成「诊断工具」。</p>
+        <a class="link-btn" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">🍽️ 打开 App 在线体验</a>
+
+        <div class="pain">
+          <div class="pain-item"><div class="n">痛点 ①</div><p>市面 App 按「食物名 + 分量」估算热量，中式家常菜做法差异大，同一种菜热量可差一倍，估算严重失真。</p></div>
+          <div class="pain-item"><div class="n">痛点 ②</div><p>减脂只看体重数字，体重不动就焦虑，忽视了围度下降、体型变好这些真实正向反馈。</p></div>
+          <div class="pain-item"><div class="n">痛点 ③</div><p>记录工具只给数据、不给分析，用户不知道「自己差在哪、该怎么调整」。</p></div>
+        </div>
+
+        <div class="subtitle">我的工作流</div>
+        <div class="flow">
+          <span><b>用户调研</b> → 痛点提炼</span>
+          <span><b>竞品分析</b> → 差异化定位</span>
+          <span><b>PRD 撰写</b> → 需求定义</span>
+          <span><b>方案设计</b> → 信息架构与交互</span>
+          <span><b>开发上线</b> → 独立实现并部署</span>
+          <span><b>数据迭代</b> → 反馈驱动 20+ 轮优化</span>
+        </div>
+
+        <div class="subtitle">关键产品决策</div>
+        <div class="decision"><b>① 用「记录颗粒度」换「估算精准度」</b><p>设计烹饪方式、用油量、酱料、自制/外卖四个精细字段，由 AI 按做法动态校准热量；同时支持拍照识别营养成分表 + 手动克重，让每餐估算有据可依。</p></div>
+        <div class="decision"><b>② 反「体重焦虑」的指标观</b><p>把多部位围度变化放在首页第一指标位、体重降权；支持 11 项围度 + BMI + 腰臀比 → AI 体型画像（梨形 / 苹果型 / 沙漏型等），并按体型给出饮食侧重建议。</p></div>
+        <div class="decision"><b>③ 从记录工具升级为诊断工具</b><p>时间轴叠加围度曲线与每周饮食指标、事件标注，用「个体内对照」自动归因（用户自己的好周期 vs 停滞周期），并一键生成两周验证计划，形成行动闭环。</p></div>
+        <div class="decision"><b>④ 诚实的产品设计</b><p>设置记录完整度门槛（周期内 ≥10 天才出归因报告）、冷启动 2–4 周基线期，所有结论标注「相关观察，仅供参考」——不做因果承诺、不做医疗建议。</p></div>
+
+        <div class="subtitle">竞品分析（驱动定位）</div>
+        <p style="font-size:14px;color:var(--text2);margin-top:10px">亲测薄荷健康（传统头部：大食物库 + 内容电商）与小卡健康（AI 新锐：拍照识别 + AI 搭子），梳理用户评价与版本迭代，输出功能对比矩阵与定位图，得出差异化结论：<b style="color:var(--primary-deep)">不做大食物库、不卷 AI 陪伴，专注「记录颗粒度 → 精准估算」与「围度/体型诊断」</b>。</p>
+
+        <div class="subtitle">结果与迭代</div>
+        <div class="metrics">
+          <div class="metric"><b>20+</b><p>用户反馈驱动的需求迭代轮次</p></div>
+          <div class="metric"><b>4</b><p>版本演进：v1 记录 → v2 AI+分析 → v3 云同步+家庭空间 → v4 精细记录+联动归因</p></div>
+          <div class="metric"><b>上线</b><p>免费部署 GitHub Pages，手机端真实可用，数据跨设备云同步</p></div>
+        </div>
+        <div class="ver">
+          <span>核心功能：AI 食物估算</span><span>拍照识别营养成分表</span><span>11 项围度记录本</span><span>体脂秤报告识别</span><span>每周热量结算</span><span>喝水目标</span><span>日记本</span><span>家庭空间共享</span>
+        </div>
+
+        <div class="subtitle">技术栈</div>
+        <div class="tags" style="margin-top:10px">
+          <span class="tag">HTML / CSS / JS 单页应用</span>
+          <span class="tag">DeepSeek 大模型（AI 估算 / 拍照识别）</span>
+          <span class="tag">腾讯云函数（AI 中转）</span>
+          <span class="tag">CloudBase 云数据库同步</span>
+        </div>
+      </div>
+
+      <div class="empty">✨ 更多项目建设中，敬请期待</div>
+    </div>
+  </section>
+</div>
+
+<!-- ========== 联系我 ========== -->
+<div class="page" id="page-contact">
+  <div class="wrap contact-page">
+    <div class="sec-tag">CONTACT</div>
+    <h2 class="sec-title">联系我</h2>
+    <p class="sec-desc" style="margin:10px auto 0">如果你对《好食光》或 AI 产品想法感兴趣，欢迎随时联系～</p>
+    <div class="contact-cards">
+      <a class="c-card" href="https://uhyuuu.github.io/haoshiguang/" target="_blank" rel="noopener">
+        <div class="ic">🍽️</div><b>《好食光》在线体验</b>
+        <p>uhyuuu.github.io/haoshiguang</p>
+      </a>
+      <a class="c-card" href="mailto:864130172@qq.com">
+        <div class="ic">📮</div><b>邮箱</b>
+        <p>864130172@qq.com</p>
+      </a>
+      <a class="c-card" href="#" onclick="navigator.clipboard&&navigator.clipboard.writeText('uhyu33');alert('微信号：uhyu33（已复制，可直接添加）');return false;">
+        <div class="ic">💬</div><b>微信</b>
+        <p>uhyu33</p>
+      </a>
     </div>
     <div class="copy">© 2026 Mio · 华中师范大学 · 用 AI 认真做产品</div>
   </div>
-</footer>
+</div>
+
+<script>
+function showPage(name){
+  var pages=document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){ pages[i].classList.remove('active'); }
+  var el=document.getElementById('page-'+name);
+  if(el) el.classList.add('active');
+  var links=document.querySelectorAll('.nav-links a');
+  for(var j=0;j<links.length;j++){ links[j].classList.remove('on'); }
+  var link=document.querySelector('.nav-links a[href="#'+name+'"]');
+  if(link) link.classList.add('on');
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',function(){
+  showPage((location.hash||'').replace('#','')||'home');
+});
+showPage((location.hash||'').replace('#','')||'home');
+</script>
 
 </body>
 </html>
